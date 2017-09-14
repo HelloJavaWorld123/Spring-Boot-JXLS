@@ -1,11 +1,8 @@
 package com.jxls.test.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jxls.test.dto.User;
 import com.jxls.test.service.UserService;
 import com.jxls.test.utils.AppResultObj;
-import com.jxls.test.utils.JackJsonUtils;
-import net.sf.json.util.JSONUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +36,7 @@ public class UserController
 			return AppResultObj.success(list);
 		}catch (Exception e){
 			LOG.debug("获取用户信息失败：{}",e.getMessage());
+			e.printStackTrace();
 			return AppResultObj.parameterError();
 		}
 

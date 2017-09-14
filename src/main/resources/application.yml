@@ -7,7 +7,7 @@ spring:
     password: TkFMKeO5xbXgbgKBWv7YOf9H8
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
-  mapperlocations: classpath:com/jxls/test/dao/mapper/*.xml
+  mapper-locations: classpath*:com/jxls/test/dao/mapper/*
   config-location: classpath:mybatis-config.xml
 
 
