@@ -9,6 +9,16 @@ spring:
 mybatis:
   mapper-locations: classpath*:com/jxls/test/dao/mapper/*
   config-location: classpath:mybatis-config.xml
+logging:
+  level: debug
+
+
+
+
+
+
+
+
 
 
 

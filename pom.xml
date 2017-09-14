@@ -58,6 +58,11 @@
             <optional>true</optional>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
         <!--转换-->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -110,6 +115,12 @@
         </dependency>
 
         <!--加载POI的依赖-->
+        <dependency>
+            <groupId>net.sf.jxls</groupId>
+            <artifactId>jxls-core</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
