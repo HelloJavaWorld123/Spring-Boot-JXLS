@@ -1,9 +1,12 @@
 package com.jxls.test.utils;
 
 import com.jxls.test.dto.ExcelDTO;
-import org.jxls.builder.xls.XlsCommentAreaBuilder;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
 import org.jxls.common.Context;
 import org.jxls.transform.Transformer;
+import org.jxls.transform.jexcel.JexcelTransformer;
 import org.jxls.util.JxlsHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,26 +34,24 @@ public class JxlsUtils
 		{
 			//将包装的数据 封装到Context对象中
 			Context context = new Context(template.getData());
-
 			String fileName = URLEncoder.encode(template.getFileName(),"UTF-8");
-
-
+			//设置响应头
 			HttpServletResponse response = template.getResponse();
-			//设置传输的文本的格式：
-			response.setHeader("content-disponsition","attchement;filename"+template.getFileName()+".xlsx");
+			//设置传输的文本以附件的形式下载
+			response.setHeader("Content-disponsition","attchement;filename"+template.getFileName()+".xlsx");
 			response.setContentType(MediaType.APPLICATION_OCTET_STREAM_VALUE);
 
-			//使用缓冲流
-			OutputStream os = response.getOutputStream();
+			OutputStream os = new BufferedOutputStream(response.getOutputStream());
 
+			//判断是只对Windows系统 有作用
 			//会在项目的根目录输出 该文件 测试专用
 			String  osName = System.getProperty("os.name");
 			if(osName.toLowerCase().startsWith("win")){
 				os = new FileOutputStream(fileName +".xlsx");
 			}
-			//从 类加载器中获取到输入流
-			InputStream is = JxlsUtils.class.getClassLoader().getResourceAsStream(template.getFilePath());
 
+			//从 类加载器中获取到输入流  即指定要读取的文件
+			InputStream is = JxlsUtils.class.getClassLoader().getResourceAsStream(template.getFilePath());
 			JxlsHelper jxlsHelper = JxlsHelper.getInstance();
 			Transformer transformer = jxlsHelper.createTransformer(is, os);
 

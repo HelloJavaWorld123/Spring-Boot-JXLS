@@ -62,7 +62,7 @@ public class UserController
 	 * @param response
 	 * @param dto
 	 */
-	@RequestMapping(value = "/execl")
+	@RequestMapping(value = "/execl",consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public AppResultObj exportExcelFromDB(HttpServletResponse response, UserInDTO dto){
 
 			try{
