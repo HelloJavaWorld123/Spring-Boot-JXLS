@@ -94,7 +94,7 @@ public class ImageCommand extends AbstractCommand
 			Object imageObje = getTransformationConfig().getExpressionEvaluator().evaluate(src, context.toMap());
 			if(imageObje != null){
 				if(!(imageObje instanceof Byte[])){
-					throw new IllegalArgumentException("src value must contain image bytes (byte[])")
+					throw new IllegalArgumentException("src value must contain image bytes (byte[])");
 				}
 
 				imgBatys = (byte[])imageObje;
